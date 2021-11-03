@@ -1,20 +1,20 @@
 from gridDraw import *
+from createWidgets import *
 import tkinter
 
+def donothing():
+    print("not implemented lol")
+
 def main():
-    sbx = 501
     app = tkinter.Tk()
+    app.wm_iconbitmap('logo.ico')
+    app.title("Graphing Calculator")
     app.geometry("750x500")
 
-    text1 = tkinter.Text(app, height = 2, width = 20).place(x = sbx, y = 20)
-    btn1 = tkinter.Button(app, height = 2, width = 3, text = "CLR").place(x = sbx + 150, y = 20)
-
-    text2 = tkinter.Text(app, height = 2, width = 20).place(x = sbx, y = 60)
-    btn2 = tkinter.Button(app, height = 2, width = 3, text = "CLR").place(x = sbx + 150, y = 60)
-
-    text2 = tkinter.Text(app, height = 2, width = 20).place(x = sbx, y = 100)
-    btn3 = tkinter.Button(app, height = 2, width = 3, text = "CLR").place(x = sbx + 150, y = 100)
-
+    createMenuBar(app = app, saveFunction = donothing, newFunction = donothing, openFunction = donothing)
+    createTxtBtns(app)
     t = drawGridOnWindow(app)
+
+
     app.mainloop()
 main()

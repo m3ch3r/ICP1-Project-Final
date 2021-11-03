@@ -8,6 +8,11 @@ def drawGrid(t):
     t.pendown()
     t.right(90)
     t.forward(500)
+    t.penup()
+    t.goto(250, 0)
+    t.right(90)
+    t.pendown()
+    t.forward(500)
 
 def drawGridOnWindow(rootWindow):
     turtleCanvas = Canvas(master = rootWindow, bg = "black", height = 500, width = 500)
