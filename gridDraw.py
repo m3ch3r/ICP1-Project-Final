@@ -3,6 +3,7 @@ from turtle import Canvas
 import tkinter as tk
 
 def drawGrid(t):
+    t.color("black")
     t.speed(-1)
     t.penup()
     t.goto(0, 250)

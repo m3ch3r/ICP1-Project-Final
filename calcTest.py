@@ -1,16 +1,18 @@
 from math import sin
-
+from math import cos
+from math import pi
 
 def evalInput(equationIn, turtleWindow, color):
+        turtleWindow.speed(-19)
         turtleWindow.color(color)
         turtleWindow.penup()
         turtleWindow.goto(0, 0)
         turtleWindow.forward(2)
-        equationOut1 = equationIn.replace("x", str(-100))
+        equationOut1 = equationIn.replace("x", str(-10))
         equationOut1 = eval(equationOut1)
         turtleWindow.goto(10, equationOut1 * 10)
         turtleWindow.pendown()
-        for x in range(-99, 100):
+        for x in range(-20, 20):
             equationOut = equationIn.replace("x", str(x))
             equationOut = eval(equationOut)
             print("old", str(x*10))
