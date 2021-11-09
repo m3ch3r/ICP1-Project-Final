@@ -6,6 +6,7 @@ import turtle
 from calcTest import evalInput
 from gridDraw import drawGrid
 
+
 def insertIntoTextBox(textBox, insertVal):
     textBox["state"] = NORMAL
     textBox.insert(END, str(insertVal))
@@ -47,28 +48,37 @@ def createCalcButtons(app, textBox):
     bActDiv = ttk.Button(app, text = "÷", width = 3, command = lambda: insertIntoTextBox(textBox, "/")).place(x = 745, y = 450)
     bActMult = ttk.Button(app, text = "×", width = 3, command = lambda: insertIntoTextBox(textBox, "*")).place(x = 745, y = 475)
     bActPi = ttk.Button(app, text = "π", width = 6, command = lambda: insertIntoTextBox(textBox, "pi")).place(x =  715, y = 350)
-def openFile():
+
+def openFile(textbox1, textbox2, textbox3):
     file = filedialog.askopenfile(filetypes =[('Python Graphing Calculator Files', '*.pygraph')])
     content = file.read()
     content = content.split(";")
-    
-    
+    insertIntoTextBox(textbox1, content[0])
+    insertIntoTextBox(textbox2, content[1])
+    insertIntoTextBox(textbox3, content[2])
 
 def createTxtBtns(app, turtle):
     sbx = 501
-    text = tkinter.Text(app, width = 12, height = 2, state = DISABLED)
-    text.place(x = sbx + 3, y = 100)
-    clr = ttk.Button(app, width = 3, text = "CLR", command = lambda: clearTextBox(text)).place(x = sbx + 150, y = 100)
-    ref1 = ttk.Button(app, width = 10, text = "Refresh/Draw", command = lambda: evalInput(text.get("1.0","end"), turtleWindow = turtle, color = "blue")).place(x = sbx + 180, y = 100)
-    ref2 = ttk.Button(app, width = 10, text = "Clear Graph", command = lambda: clearCanvas(turtle)).place(x = sbx + 180, y = 50)
-    createCalcButtons(app, text)
+    text1 = tkinter.Text(app, width = 12, height = 2, state = DISABLED)
+    text1.place(x = sbx + 3, y = 100)
 
-def createMenuBar(app, saveFunction, newFunction, openFunction):
+    text2 = tkinter.Text(app, width = 12, height = 2, state = DISABLED)
+    text2.place(x = sbx + 3, y = 150)
+
+    text3 = tkinter.Text(app, width = 12, height = 2, state = DISABLED)
+    text3.place(x = sbx + 3, y = 200)
+
+
+    clr = ttk.Button(app, width = 3, text = "CLR", command = lambda: clearTextBox(text1)).place(x = sbx + 150, y = 100)
+    ref1 = ttk.Button(app, width = 10, text = "Refresh/Draw", command = lambda: evalInput(text1.get("1.0","end"), turtleWindow = turtle, color = "blue")).place(x = sbx + 180, y = 100)
+    ref2 = ttk.Button(app, width = 10, text = "Clear Graph", command = lambda: clearCanvas(turtle)).place(x = sbx + 180, y = 50)
+    createCalcButtons(app, text1)
+    createMenuBar(app, text1, text2, text3)
+
+def createMenuBar(app, text1, text2, text3):
     menuBar = tkinter.Menu(app)
     fileMenu = tkinter.Menu(menuBar, tearoff=0)
-    fileMenu.add_command(label="New", command = newFunction)
-    fileMenu.add_command(label="Open", command = openFile)
-    fileMenu.add_command(label="Save", command = saveFunction)
+    fileMenu.add_command(label="Open", command = lambda: openFile(text1, text2, text3))
     fileMenu.add_separator()
     fileMenu.add_command(label="Exit", command = app.quit)
     menuBar.add_cascade(label="File", menu = fileMenu)

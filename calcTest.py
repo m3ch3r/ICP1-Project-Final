@@ -1,9 +1,10 @@
 from math import sin
 from math import cos
 from math import pi
+from math import sqrt
 
 def evalInput(equationIn, turtleWindow, color):
-        turtleWindow.speed(-19)
+        turtleWindow.speed(-1)
         turtleWindow.color(color)
         turtleWindow.penup()
         turtleWindow.goto(0, 0)

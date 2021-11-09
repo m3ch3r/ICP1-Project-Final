@@ -17,7 +17,6 @@ def main():
 
  
     t = drawGridOnWindow(app)
-    createMenuBar(app = app, saveFunction = donothing, newFunction = donothing, openFunction = donothing)
     createTxtBtns(app, t)
 
     app.mainloop()
