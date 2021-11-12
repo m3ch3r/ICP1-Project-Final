@@ -1,3 +1,12 @@
+"""
+
+Title: Python Graphing Calculator
+Author: Braden Franklin
+Class: Mrs. Woldseth ICP1 Tri 1 2021
+Description: A Graphing coded in python that utilizes both turtle and tkinter
+
+"""
+
 from gridDraw import *
 from createWidgets import *
 from calcTest import *
@@ -13,7 +22,7 @@ def main():
     app.wm_iconbitmap('logo.ico')
     app.title("Graphing Calculator")
     app.geometry("800x500")
-    messagebox.showinfo(title = "Notice", message = "This is a reminder that when formatting equations to make it the full equation. You cannot put for example 1x + 3, it must be formatted like 1*x+3.")
+    app.resizable(False, False)
 
  
     t = drawGridOnWindow(app)
